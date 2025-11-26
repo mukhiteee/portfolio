@@ -1,0 +1,229 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(#003 10%, black 100%);
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: green;
+}
+
+.head {
+    position: sticky;
+    top: 0;
+    background-color: #0035;
+    padding: 1rem;
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    border: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.head h1 {
+    font-size: 26px;
+    font-weight: 400;
+    background: linear-gradient(140deg, red 1%, blue 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.hero {
+    background: radial-gradient(#003 10%, black 100%);
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0 10px;
+    margin-top: 30px;
+    padding: 2rem;
+    border: none;
+    border-radius: 15px;
+}
+
+.hero img:nth-of-type(1) {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 2px solid #090909;
+    display: block;
+}
+
+.hero h2 {
+    font-size: 34px;
+    font-weight: 700;
+    background: linear-gradient(140deg, red 1%, blue 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.hero p {
+    color: #fff;
+    text-align: justify;
+    padding: 0.5rem 0;
+    font-weight: 200;
+    line-height: 25px;
+}
+
+.hero-footer {
+    display: none;
+}
+
+.hero-footer span {
+    display: inline-block;
+    display: none;
+}
+
+.hero-footer span img:nth-of-type(1) {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    display: none;
+}
+
+.cta {
+    display: inline-block;
+    margin-left: -0.5rem;
+}
+
+.cta button {
+    width: 120px;
+    height: 50px;
+    display: inline-block;
+    margin: 0.5rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    color: white;
+    background-color: #1f1f1f;
+}
+
+.primary-btn {
+    background: linear-gradient(230deg, red 1%, blue 100%);
+    border: none;
+}
+
+.secondary-btn {
+    background: linear-gradient(140deg, red 1%, blue 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border: none;
+}
+
+.about {
+    background: radial-gradient(#003 10%, black 100%);
+    background-position: center;
+    background-attachment: fixed;
+    margin-top: 50px;
+    border: none;
+}
+
+.about-header {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    border: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.about-header h2 {
+    font-weight: 400;
+    background: linear-gradient(140deg, red 1%, blue 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.about-body {
+    padding: 2rem;
+    padding-top: 0;
+}
+
+.about p {
+    color: #fff;
+    padding: 0.5rem 0;
+    font-weight: 400;
+    line-height: 25px;
+    font-weight: 200;
+}
+
+.skills {
+    background: radial-gradient(#003 10%, black 100%);
+    background-position: center;
+    background-attachment: fixed;
+    margin-top: 50px;
+    border: none;
+}
+
+.skills-header {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    border: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.skills-header h2 {
+    font-weight: 400;
+    background: linear-gradient(140deg, red 1%, blue 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.skills-header p {
+    font-weight: 200;
+    margin-left: 20px;
+    color: #fff;
+    font-style: italic;
+}
+
+.skills-container {
+    padding: 2rem;
+    padding-top: 0;
+}
+
+.skills-card {
+    width: 45%;
+    height: 120px;
+    border: none;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #0036;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #fff1;
+}
+
+.skills-card i {
+    background-color: purple;
+    width: 100px;
+    height: 100px;
+}
+
+.skills-card h6 {
+    color: #fff;
+}
