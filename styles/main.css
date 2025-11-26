@@ -163,7 +163,7 @@ body {
     font-weight: 200;
 }
 
-.skills {
+.skills, .projects {
     background: radial-gradient(#003 10%, black 100%);
     background-position: center;
     background-attachment: fixed;
@@ -171,7 +171,7 @@ body {
     border: none;
 }
 
-.skills-header {
+.skills-header, .projects-header {
     position: sticky;
     top: 0;
     padding: 1rem;
@@ -182,7 +182,7 @@ body {
     border-bottom-right-radius: 15px;
 }
 
-.skills-header h2 {
+.skills-header h2, .projects-header h2 {
     font-weight: 400;
     background: linear-gradient(140deg, red 1%, blue 100%);
     -webkit-text-fill-color: transparent;
@@ -191,39 +191,107 @@ body {
     margin-left: 20px;
 }
 
-.skills-header p {
+.skills-header p, .projects-header p {
     font-weight: 200;
     margin-left: 20px;
     color: #fff;
     font-style: italic;
 }
 
-.skills-container {
+.skills-container, .projects-container {
     padding: 2rem;
     padding-top: 0;
+    margin-left: -10px;
 }
 
 .skills-card {
-    width: 45%;
-    height: 120px;
+    height: 100px;
     border: none;
     margin-left: 10px;
     margin-top: 10px;
     border-radius: 5px;
-    background-color: #0036;
+    background-color: #0039;
     display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center;
     border: 1px solid #fff1;
+    padding: 1rem 2rem;
+    gap: 30px;
 }
 
 .skills-card i {
     background-color: purple;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+    font-size: 4rem;
 }
 
 .skills-card h6 {
     color: #fff;
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+
+.projects-container {
+    margin-top: 10px;
+}
+
+.projects-card {
+    position: relative;
+    width: 350px;
+    height: 300px;
+    border: 1px solid #003;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-bg img {
+    width: 100%;
+}
+
+.card-overlay {
+    position: absolute;
+    background-color: #cc02;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.card-overlay-head {
+    padding: 0.5rem 1rem;
+}
+
+.card-overlay-head h2 {
+    background-color: #0037;
+    display: inline-block;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.card-overlay-bottom {
+    display: block;
+    position: absolute;
+    background: #003;
+    bottom: 0;
+    border: none;
+    padding: 1rem;
+}
+
+.card-overlay-bottom h1 {
+    background: linear-gradient(140deg, red 1%, blue 100%);
+    background-position: center;
+    background-attachment: fixed;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    background-clip: text;
+}
+
+.card-overlay-bottom p {
+    color: #fff;
+    font-weight: 200;
+
 }
