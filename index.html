@@ -7,9 +7,32 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <div class="head">
+    <!-- Particle canvas -->
+    <canvas id="particles"></canvas>
+
+    <header class="head" role="banner">
+       <div class="brand">
         <h1>Mukhiteee</h1>
+       </div>
+
+        
+    <div style="display:flex; gap:12px; align-items:center">
+      <nav class="primary" aria-label="Primary navigation">
+        <button data-target="#top" class="nav-btn is-active">Home</button>
+        <button data-target="#about" class="nav-btn">About</button>
+        <button data-target="#skills" class="nav-btn">Skills</button>
+        <button data-target="#projects" class="nav-btn">Projects</button>
+        <button data-target="#contact" class="nav-btn">Contact</button>
+        <button data-target="#profile" class="nav-btn">Profile</button>
+      </nav>
+
+      <div class="controls">
+        <div title="Toggle theme" class="toggle" id="themeToggle" role="button" aria-pressed="false">
+          <div class="dot" aria-hidden="true"></div>
+        </div>
+      </div>
     </div>
+    </header>
 
     <div class="hero">
         <img src="assets/images/avatar.png" alt="Mukhiteee Picture">
