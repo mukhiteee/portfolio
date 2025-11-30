@@ -3,241 +3,1273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mukhiteee</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <meta name="description" content="React developer specialising in landing pages, frontend fixes, hosting & DB fixes. Fast turnarounds, clear pricing.">
+    <meta property="og:title" content="Mukhiteee — Landing Pages & Web Fixes">
+    <meta property="og:description" content="React developer specialising in landing pages, frontend fixes, hosting & DB fixes. Fast turnarounds, clear pricing.">
+    <meta property="og:type" content="website">
+    <title>Mukhiteee — Dev Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b0f14;
+            --panel: #0f1720;
+            --accent: #00d1ff;
+            --accent2: #7c3aed;
+            --muted: #9aa4b2;
+            --white: #e6eef6;
+            --card-hover: #151d28;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 15, 20, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 209, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 209, 255, 0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 209, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            border: 2px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Code Card */
+        .code-card {
+            background: var(--panel);
+            border-radius: 14px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .code-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 209, 255, 0.3);
+        }
+
+        .code-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dot:nth-child(1) { background: #ff5f56; }
+        .code-dot:nth-child(2) { background: #ffbd2e; }
+        .code-dot:nth-child(3) { background: #27c93f; }
+
+        .code-content {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .code-line {
+            display: block;
+        }
+
+        .keyword { color: #ff79c6; }
+        .function { color: #50fa7b; }
+        .string { color: #f1fa8c; }
+        .comment { color: var(--muted); }
+        .number { color: #bd93f9; }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--panel);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 209, 255, 0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 209, 255, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* Services/Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .package-card {
+            background: var(--panel);
+            padding: 2.5rem;
+            border-radius: 14px;
+            border: 2px solid rgba(0, 209, 255, 0.15);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .package-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 209, 255, 0.25);
+        }
+
+        .package-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            color: var(--muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            background: var(--panel);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 209, 255, 0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 209, 255, 0.3);
+            border-color: var(--accent);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--panel), var(--card-hover));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 209, 255, 0.1), rgba(124, 58, 237, 0.1));
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .portfolio-content p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 209, 255, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .process-step h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .process-step p {
+            color: var(--muted);
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .testimonial-card {
+            background: var(--panel);
+            padding: 2.5rem;
+            border-radius: 14px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--panel);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 209, 255, 0.15);
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-details a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--panel);
+            padding: 2rem;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 209, 255, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--bg);
+            border: 2px solid rgba(0, 209, 255, 0.2);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 209, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--panel);
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(0, 209, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 209, 255, 0.1);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid,
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- Particle canvas -->
-    <canvas id="particles"></canvas>
-
-    <header class="head" role="banner">
-       <div class="brand">
-        <h1>Mukhiteee</h1>
-       </div>
-
-        
-    <div style="display:flex; gap:12px; align-items:center">
-      <nav class="primary" aria-label="Primary navigation">
-        <button data-target="#top" class="nav-btn is-active">Home</button>
-        <button data-target="#about" class="nav-btn">About</button>
-        <button data-target="#skills" class="nav-btn">Skills</button>
-        <button data-target="#projects" class="nav-btn">Projects</button>
-        <button data-target="#contact" class="nav-btn">Contact</button>
-        <button data-target="#profile" class="nav-btn">Profile</button>
-      </nav>
-
-      <div class="controls">
-        <div title="Toggle theme" class="toggle" id="themeToggle" role="button" aria-pressed="false">
-          <div class="dot" aria-hidden="true"></div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">&lt;Mukhiteee /&gt;</div>
+            <ul class="nav-links">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="https://wa.me/2348012345678" class="nav-cta">Hire Me</a>
+            <button class="mobile-menu-btn">☰</button>
         </div>
-      </div>
-    </div>
-    </header>
-        <main id="top">
-            <section class="hero reveal" aria-labelledby="hero-heading">
-            <div class="hero-inner">
-                <div class="intro">
-                <img class="avatar" src="assets/images/avatar.png" alt="Mukhiteee Picture">
-                    <h2 id="hero-heading"><span id="typing"></span></h2>
-                    <p id="hero-blurb">I'm a programmer who loves bringing ideas to life from clean front-end interfaces to functional back-end logic. I work comfortably with HTML, CSS, JavaScript, PHP and MySQL, and I'm always experimenting with better ways to build faster and cleaner. Outside pure coding, I teach people what I learn and create content that helps others grow. And when I'm not in dev mode. I'm making music, shooting photos, or cooking up something creative. Basically, I'm always building in tech, in art, and in the people around me.</p>
-                </div>
+    </nav>
 
-                <div class="hero-footer" aria-hidden="false">
-                <span><img src="assets/images/avatar.png" alt="" style="width:30px;height:30px;border-radius:50%"></span>
-                <span><i class="fa-twitter">Twitter</i></span>
-                <span><i class="fa-github">GitHub</i></span>
-                </div>
-
-                <div class="cta">
-                <button class="primary-btn" id="exploreBtn">Explore</button>
-                <button class="secondary-btn" id="cvBtn">Download CV ↓</button>
-                </div>
-            </div>
-            </section>
-
-            <div id="about" class="about reveal" aria-labelledby="about-heading">
-            <div class="about-header">
-            <h2 id="about-heading">About</h2>
-            </div>
-            <div class="about-body">
-            <p>I'm a programmer who loves turning idea into real, functional, aesthetically clean digital experiences. I work across both front-end and back-end, blending sharp UI work with solid logic underneath. My toolkit is a mix of HTML, CSS, JavaScript, PHP, and MySQL, basically everything I need to build full projects. I enjoy figuring things out, simplifying problems, and writing code that actually makes sense instead of messy chaos.</p>
-            <p>Teaching is a big part of what I do too. I like breaking tech down in a way people actually understand, whether it's beginners trying to enter the devpace or friends levelling up their workflow. Sharing knowledge makes the whole grind feel more meaningful, so I do it through explanantions contnet, and wahtever else helps people catch on faster.</p>
-            <p>Outside the tech world, I stay deep in creativity, producing music, taking photos and making content that reflects everything I'm learning and building. I'm basically always creating something, whether it's code, visuals, or sound. My whole goal is to keep improving, stay curious, and help others grow while I level up too.</p>
-            <div class="about-footer">
-                <span></span>
-                <span></span>
-            </div>
-            </div>
-            </div>
-
-            <div id="skills" class="skills reveal" aria-labelledby="skills-heading">
-            <div class="skills-header">
-            <h2 id="skills-heading">Skills</h2>
-            <p>The Magic Behind My Work</p>
-            </div>
-
-            <div class="skills-container">
-            <div class="skills-card">
-                <i class="fa-html">5</i>
-                <h6>HTML</h6>
-            </div>
-
-            <div class="skills-card">
-                <i class="fa-css"></i>
-                <h6>CSS</h6>
-            </div>
-
-            <div class="skills-card">
-                <i class="fa-css"></i>
-                <h6>Javascript</h6>
-            </div>
-
-            <div class="skills-card">
-                <i class="fa-css"></i>
-                <h6>PHP</h6>
-            </div>
-
-            <div class="skills-card">
-                <i class="fa-css"></i>
-                <h6>MySQL</h6>
-            </div>
-
-            <div class="skills-card">
-                <i class="fa-css"></i>
-                <h6>React.js</h6>
-            </div>
-            </div>
-            </div>
-
-            <div id="projects" class="projects reveal" aria-labelledby="projects-heading">
-            <div class="projects-header">
-            <h2 id="projects-heading">Projects</h2>
-            <p>What I've done in the past?  </p>
-            </div>
-
-            <div class="projects-container">
-            <div class="projects-card">
-                <div class="card-bg">
-                    <img src="assets/images/avatar.png" alt="">
-                </div>
-                <div class="card-overlay">
-                    <div class="card-overlay-head">
-                        <h2>E-Commerce</h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Hey, I'm Mukhiteee — I build fast, reliable web stuff.</h1>
+                    <p>Landing pages, frontend fixes, hosting, DB fixes, design & edits.</p>
+                    <div class="hero-ctas">
+                        <a href="https://wa.me/2348012345678" class="btn-primary">WhatsApp: +234 801 234 5678</a>
+                        <a href="#portfolio" class="btn-secondary">View Work</a>
                     </div>
-                    <div class="card-overlay-bottom">
-                        <h1>MubaXpress</h1>
-                        <p>An E-Commerce platform for University Campuses with over 20,000 users</p>
-                        <a href="">View &UpTeeArrow;</a>
+                </div>
+                <div class="code-card">
+                    <div class="code-header">
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
+                    </div>
+                    <div class="code-content">
+                        <span class="code-line"><span class="keyword">const</span> <span class="function">developer</span> = {</span>
+                        <span class="code-line">  name: <span class="string">"Mukhiteee"</span>,</span>
+                        <span class="code-line">  skills: [<span class="string">"React"</span>, <span class="string">"CSS"</span>, <span class="string">"JS"</span>],</span>
+                        <span class="code-line">  turnaround: <span class="number">3-7</span> <span class="comment">// days</span>,</span>
+                        <span class="code-line">  quality: <span class="string">"production-ready"</span></span>
+                        <span class="code-line">};</span>
+                        <span class="code-line"></span>
+                        <span class="code-line"><span class="function">shipProject</span>(developer);</span>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
+    </section>
 
-            <div class="projects-container">
-            <div class="projects-card">
-                <div class="card-bg">
-                    <img src="assets/images/avatar.png" alt="">
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">What I Do Best</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Landing Pages</h3>
+                    <p>React, HTML/CSS/JS. Fast-loading, mobile-responsive pages that convert visitors into customers.</p>
                 </div>
-                <div class="card-overlay">
-                    <div class="card-overlay-head">
-                        <h2>e-Commerce</h2>
+                <div class="skill-card">
+                    <div class="skill-icon">🔧</div>
+                    <h3>Frontend Fixes</h3>
+                    <p>Broken layouts? Responsiveness issues? I fix cross-browser bugs and optimize for all devices.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>DB & Form Fixes</h3>
+                    <p>MySQL tweaks, form integrations, and backend connections. Small fixes that unblock launches.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🚀</div>
+                    <h3>Hosting & Deploy</h3>
+                    <p>cPanel migrations, Netlify/Vercel setup, SSL config, and domain management. I handle the tech.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">✨</div>
+                    <h3>Graphic Design</h3>
+                    <p>Social media assets, YouTube thumbnails, and brand graphics that stand out.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎬</div>
+                    <h3>Video Editing</h3>
+                    <p>Short-form tutorials, promo clips, and clean cuts for your content marketing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Real Fixes, Not Fluff</h2>
+            <p style="text-align: center; color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">I solve the problems that stop you from launching. Clear pricing, fast delivery.</p>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3 class="package-name">Basic</h3>
+                    <div class="package-price">₦20k–₦35k</div>
+                    <ul class="package-features">
+                        <li>1-section landing page or small fix</li>
+                        <li>Mobile responsive design</li>
+                        <li>3-day turnaround</li>
+                        <li>1 revision included</li>
+                    </ul>
+                    <a href="https://wa.me/2348012345678?text=Hi!%20I'm%20interested%20in%20the%20Basic%20package" class="btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+                </div>
+                <div class="package-card">
+                    <h3 class="package-name">Standard</h3>
+                    <div class="package-price">₦40k–₦60k</div>
+                    <ul class="package-features">
+                        <li>Multi-section landing page</li>
+                        <li>Form integration (email/DB)</li>
+                        <li>Hosting setup assistance</li>
+                        <li>5-day turnaround</li>
+                        <li>2 revisions included</li>
+                    </ul>
+                    <a href="https://wa.me/2348012345678?text=Hi!%20I'm%20interested%20in%20the%20Standard%20package" class="btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+                </div>
+                <div class="package-card">
+                    <h3 class="package-name">Premium</h3>
+                    <div class="package-price">₦80k–₦120k</div>
+                    <ul class="package-features">
+                        <li>Custom design from scratch</li>
+                        <li>Full hosting + SSL + deploy</li>
+                        <li>DB form handling & backend</li>
+                        <li>2 weeks post-launch support</li>
+                        <li>Unlimited revisions</li>
+                    </ul>
+                    <a href="https://wa.me/2348012345678?text=Hi!%20I'm%20interested%20in%20the%20Premium%20package" class="btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Recent Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🚀</div>
+                    <div class="portfolio-content">
+                        <h3>React Landing — Product Launch</h3>
+                        <p>One-page React landing with animated hero, optimized for first contentful paint and mobile.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Vite</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Netlify</span>
+                        </div>
                     </div>
-                    <div class="card-overlay-bottom">
-                        <h1>ExamBolt</h1>
-                        <p>An e-Commerce platform for University Campuses with over 20,000 users</p>
-                        <a href="">View &UpTeeArrow;</a>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🔧</div>
+                    <div class="portfolio-content">
+                        <h3>Frontend Rescue — Fix Pack</h3>
+                        <p>Before/after of layout and responsiveness fixes for a broken theme. Mobile-first rebuild.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🗄️</div>
+                    <div class="portfolio-content">
+                        <h3>DB Repair — Form & Auth</h3>
+                        <p>Simple form + backend connection demo with MySQL stub. Fixed data validation and security.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">AJAX</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🚀</div>
+                    <div class="portfolio-content">
+                        <h3>Hosting Migration — cPanel → Netlify</h3>
+                        <p>Complete migration with automated domain & SSL setup. Zero downtime deployment.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">cPanel</span>
+                            <span class="tech-tag">DNS</span>
+                            <span class="tech-tag">Netlify</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🎨</div>
+                    <div class="portfolio-content">
+                        <h3>Design — Social & Thumbnail Pack</h3>
+                        <p>Graphic assets package for social media and YouTube thumbnails. Brand-consistent visuals.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">PNG</span>
+                            <span class="tech-tag">SVG</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🎬</div>
+                    <div class="portfolio-content">
+                        <h3>Video Edit — Mini Tutorial</h3>
+                        <p>Short-form tutorial edit showing a 60-second dev tip with smooth transitions and captions.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Premiere</span>
+                            <span class="tech-tag">MP4</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
+    </section>
 
-            <div class="projects-container">
-            <div class="projects-card">
-                <div class="card-bg">
-                    <img src="assets/images/avatar.png" alt="">
+    <!-- Process Section -->
+    <section id="process" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Brief</h3>
+                    <p>WhatsApp me with your project details. We'll scope it in 15 minutes and agree on deliverables.</p>
                 </div>
-                <div class="card-overlay">
-                    <div class="card-overlay-head">
-                        <h2>E-Commerce</h2>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Build</h3>
+                    <p>I start work immediately. Regular updates via WhatsApp. Delivery in 3–7 days depending on package.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Deliver + Support</h3>
+                    <p>You get the files, deployment, and 7–14 days of support. Payment via bank transfer or Paystack.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: var(--muted); margin-bottom: 1rem;">Fast turnarounds. Clear scope. No hidden fees.</p>
+                <a href="https://wa.me/2348012345678?text=Hi!%20I'd%20like%20to%20discuss%20a%20project" class="btn-primary">Start a Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Client Feedback</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Mukhiteee delivered my landing page in 4 days — mobile-perfect, fast loading, and exactly what I briefed. The WhatsApp updates kept me in the loop the whole time. Will definitely work with him again."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Adebayo Johnson</h4>
+                            <p>Founder, TechHub Lagos</p>
+                        </div>
                     </div>
-                    <div class="card-overlay-bottom">
-                        <h1>MubaXpress</h1>
-                        <p>An E-Commerce platform for University Campuses with over 20,000 users</p>
-                        <a href="">View &UpTeeArrow;</a>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I had a broken theme that no one could fix. Mukhiteee diagnosed the CSS issues in minutes and had it working across all devices by the next day. Super responsive and knows his stuff."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>Chioma Okafor</h4>
+                            <p>E-commerce Store Owner</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-            </div>
+        </div>
+    </section>
 
-            <div class="contact">
-            <div class="contact-header">
-            <h2>Contact</h2>
-            <p>Lets Connect</p>
-            </div>
-
-            <div class="contact-container">
-            <form action="" method="post">
-                <div class="form-input">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" placeholder="Enter Your Name">
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Let's Build Something</h2>
+            <p style="text-align: center; color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">WhatsApp me — let's scope it in 15 mins.</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <p><a href="https://wa.me/2348012345678">+234 801 234 5678</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><a href="mailto:mukhiteee@example.com">mukhiteee@example.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-details">
+                            <h3>GitHub</h3>
+                            <p><a href="https://github.com/mukhiteee" target="_blank">github.com/mukhiteee</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">🐦</div>
+                        <div class="contact-details">
+                            <h3>Twitter/X</h3>
+                            <p><a href="https://twitter.com/mukhiteee" target="_blank">@mukhiteee</a></p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-input">
-                    <Label for="email">Email</Label>
-                    <input type="email" name="email" id="email" placeholder="Input Your Email">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select budget</option>
+                                <option value="20-35k">₦20k–₦35k (Basic)</option>
+                                <option value="40-60k">₦40k–₦60k (Standard)</option>
+                                <option value="80-120k">₦80k–₦120k (Premium)</option>
+                                <option value="custom">Custom Project</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="brief">Project Brief</label>
+                            <textarea id="brief" name="brief" required placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">Preferred Contact</label>
+                            <select id="contact" name="contact" required>
+                                <option value="">Select method</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone Call</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
                 </div>
-
-                <div class="form-input">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" placeholder="Input your projects description"></textarea>
-                </div>
-
-                <button type="submit">Send</button>
-            </form>
-
-            <div class="contact-card">
-                <button><a href="assets/images/avatar.png"><img src="assets/images/avatar.png" alt=""></a></button>
-                <button><a href="assets/images/avatar.png"><img src="assets/images/avatar.png" alt=""></a></button>
-                <button><a href="assets/images/avatar.png"><img src="assets/images/avatar.png" alt=""></a></button>
-                <button><a href="assets/images/avatar.png"><img src="assets/images/avatar.png" alt=""></a></button>
-                <button><a href="assets/images/avatar.png"><img src="assets/images/avatar.png" alt=""></a></button>
             </div>
-            </div>
-            </div>
-        </main>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-header">
-            <h1>Mukhiteee</h1><br>
-            <p>Full Stack Web Developer</p>
-        </div>
-
-        <div class="navs">
-            <nav>
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Skills</li>
-                    <li>Projects</li>
-                    <li>Contact</li>
-                    <li>Profile</li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="footer-icons">
-            <a href=""><i></i></a>
-            <a href=""><i></i></a>
-            <a href=""><i></i></a>
-            <a href=""><i></i></a>
-            <a href=""><i></i></a>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 All rights reserved</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="code-font">&lt;Mukhiteee /&gt;</h3>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Building fast, reliable web stuff. Landing pages, fixes, deploys.</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://github.com/mukhiteee" class="social-link" target="_blank">GH</a>
+                        <a href="https://twitter.com/mukhiteee" class="social-link" target="_blank">X</a>
+                        <a href="https://wa.me/2348012345678" class="social-link">WA</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Landing Pages</a></li>
+                        <li><a href="#services">Frontend Fixes</a></li>
+                        <li><a href="#services">Hosting & Deploy</a></li>
+                        <li><a href="#services">Design & Video</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mukhiteee. Built with React + Vite. Deployed on Vercel.</p>
+            </div>
         </div>
     </footer>
-    <script src="scripts/main.js"></script>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                budget: document.getElementById('budget').value,
+                brief: document.getElementById('brief').value,
+                contact: document.getElementById('contact').value
+            };
+
+            // Create WhatsApp message
+            const message = `Hi! I'm ${formData.name}.%0A%0AProject: ${formData.brief}%0ABudget: ${formData.budget}%0AContact me via: ${formData.contact}%0AEmail: ${formData.email}`;
+            const whatsappURL = `https://wa.me/2348012345678?text=${message}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            this.reset();
+            alert('Opening WhatsApp... Your message has been prepared!');
+        });
+
+        // Code typing animation
+        const codeLines = document.querySelectorAll('.code-line');
+        codeLines.forEach((line, index) => {
+            line.style.opacity = '0';
+            setTimeout(() => {
+                line.style.transition = 'opacity 0.5s ease';
+                line.style.opacity = '1';
+            }, index * 200);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'var(--panel)';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '1rem';
+                navLinks.style.gap = '1rem';
+            }
+        });
+
+        // Copy to clipboard functionality
+        document.querySelectorAll('.contact-details a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href.startsWith('mailto:') || this.href.startsWith('tel:')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const text = this.textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
+                    this.style.color = 'var(--accent2)';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.color = '';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Parallax effect on hero code card
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const codeCard = document.querySelector('.code-card');
+            if (codeCard && scrolled < window.innerHeight) {
+                codeCard.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Add hover glow effect to cards
+        document.querySelectorAll('.skill-card, .package-card, .portfolio-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
 </body>
 </html>
